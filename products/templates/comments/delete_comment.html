@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Comment</title>
+    <!-- Add your CSS links or styles here -->
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Comment</h1>
+        <p>Are you sure you want to delete the following comment?</p>
+        <p><strong>Comment:</strong> {{ comment.comment }}</p>
+        <p><strong>Product:</strong> {{ product.name }}</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <a href="{% url 'products:product-detail' page_id=product.page.id product_id=product.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

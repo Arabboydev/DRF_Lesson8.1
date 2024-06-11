@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Profile
+{% endblock title %}
+
+{% block content %}
+   <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="h4">Profile</h1>
+                    </div>
+                    <div class="card-body">
+                        {% if user.image %}
+                            <div class="text-center mb-4">
+                                <img src="{{ user.image.url }}" alt="user-img" class="img-thumbnail" width="150px">
+                            </div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Username:</strong> {{ user.username }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Email:</strong> {{ user.email }}</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a class="btn btn-danger mt-3" href="{% url 'users:logout' %}">Logout</a>
+                            <a href="{% url 'users:profile-edit' %}" class="btn btn-primary mt-3">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

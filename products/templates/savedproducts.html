@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Saved Products
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="my-4">My Saved Products</h1>
+        <div class="list-group">
+            {% for save in savedproducts %}
+                <a href="{% url 'products:product-detail' page_id=save.product.page.id product_id=save.product.id %}" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ save.product.name }}</h5>
+                    <p class="mb-1">{{ save.saved_at }}</p>
+                </a>
+            {% empty %}
+                <p class="text-muted">No product found.</p>
+            {% endfor %}
+        </div>
+        <a href="{% url 'products:home' %}" class="btn btn-primary mt-4">Back to Home</a>
+    </div>
+{% endblock %}

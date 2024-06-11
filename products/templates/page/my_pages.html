@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    my pages
+{% endblock %}
+
+{% block content %}
+        <div class="container mt-4">
+        <h1 class="my-4">My Pages</h1>
+        <div class="list-group">
+            {% for page in pages %}
+                <a href="{% url 'products:page-detail' page_id=page.id %}" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ page.name }}</h5>
+                    <p class="mb-1">{{ page.category }}</p>
+                </a>
+            {% empty %}
+                <p class="text-muted">No pages found.</p>
+            {% endfor %}
+        </div>
+        <a href="{% url 'products:home' %}" class="btn btn-primary mt-4">Back to Home</a>
+    </div>
+{% endblock %}
